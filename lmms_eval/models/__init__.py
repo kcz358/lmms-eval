@@ -113,6 +113,8 @@ AVAILABLE_SIMPLE_MODELS = {
 }
 
 AVAILABLE_CHAT_TEMPLATE_MODELS = {
+    "aero_realtime": "AeroRealtimeChat",
+    "aero_realtime_vllm": "AeroRealtimeVLLM",
     "bagel_lmms_engine": "BagelLmmsEngine",
     "fastvideo": "FastVideo",
     "internvl_hf": "InternVLHf",
