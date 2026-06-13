@@ -1,0 +1,25 @@
+include: _default_template.yaml
+dataset_name: Proactive_Output
+dataset_kwargs:
+  cache_dir: streamingbench
+  verification_mode: no_checks
+task: streamingbench_proactive
+test_split: Proactive_Output_250
+output_type: generate_until_multi_round
+doc_to_messages: !function utils.streamingbench_proactive_doc_to_messages
+doc_to_text: !function utils.streamingbench_proactive_doc_to_text
+doc_to_target: "ground_truth_output"
+process_results: !function utils.streamingbench_proactive_process_results
+metric_list:
+  - metric: proactive
+    aggregation: !function utils.streamingbench_proactive_aggregate
+    higher_is_better: true
+generation_kwargs:
+  max_new_tokens: 64
+  temperature: 0
+  top_p: 1.0
+  do_sample: false
+lmms_eval_specific_kwargs:
+  default:
+    # Cap at 90 to avoid runaway long videos; per-sample default is gt-start+4.
+    max_round_proactive: 90

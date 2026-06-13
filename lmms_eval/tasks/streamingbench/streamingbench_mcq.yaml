@@ -1,0 +1,6 @@
+group: streamingbench_mcq
+task:
+- streamingbench_real
+- streamingbench_omni
+- streamingbench_contextual
+- streamingbench_sequential

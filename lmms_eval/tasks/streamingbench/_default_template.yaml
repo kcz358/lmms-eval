@@ -1,0 +1,10 @@
+dataset_path: mjuicem/StreamingBench
+dataset_kwargs:
+  cache_dir: streamingbench
+generation_kwargs:
+  max_new_tokens: 32
+  temperature: 0
+  top_p: 1.0
+  do_sample: false
+metadata:
+  - version: 0.0

@@ -1,0 +1,17 @@
+include: _default_template.yaml
+dataset_name: Sequential_Question_Answering
+task: streamingbench_sequential
+test_split: Sequential_Question_Answering
+output_type: generate_until
+process_docs: !function utils.streamingbench_sequential_process_docs
+doc_to_messages: !function utils.streamingbench_sequential_doc_to_messages
+doc_to_text: !function utils.streamingbench_sequential_doc_to_text
+doc_to_target: "answer"
+process_results: !function utils.streamingbench_static_process_results
+metric_list:
+  - metric: acc
+    aggregation: !function utils.streamingbench_static_aggregate
+    higher_is_better: true
+lmms_eval_specific_kwargs:
+  default:
+    context_time: 60
