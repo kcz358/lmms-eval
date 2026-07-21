@@ -1,0 +1,29 @@
+dataset_path: json
+dataset_kwargs:
+  data_files:
+    test: https://huggingface.co/datasets/kcz358/QIVD/resolve/main/metadata.jsonl
+task: qivd
+test_split: test
+output_type: generate_until
+doc_to_messages: !function utils.qivd_doc_to_messages
+doc_to_text: !function utils.qivd_doc_to_text
+doc_to_target: short_answer
+process_results: !function utils.qivd_process_results
+
+generation_kwargs:
+  max_new_tokens: 32
+  temperature: 0
+  top_p: 1.0
+  do_sample: false
+
+metric_list:
+  - metric: qivd_accuracy
+    aggregation: !function utils.qivd_aggregate
+    higher_is_better: true
+
+lmms_eval_specific_kwargs:
+  default:
+    data_dir: null
+
+metadata:
+  version: 0.0
